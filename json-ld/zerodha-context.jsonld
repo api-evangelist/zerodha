@@ -1,0 +1,298 @@
+{
+  "@context": {
+    "@vocab": "https://kite.trade/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "zerodha": "https://kite.trade/schema#",
+    "PostAlertsRequest": "zerodha:PostAlertsRequest",
+    "name": {
+      "@id": "zerodha:name",
+      "@type": "xsd:string"
+    },
+    "lhs_exchange": {
+      "@id": "zerodha:lhs_exchange",
+      "@type": "xsd:string"
+    },
+    "lhs_tradingsymbol": {
+      "@id": "zerodha:lhs_tradingsymbol",
+      "@type": "xsd:string"
+    },
+    "lhs_attribute": {
+      "@id": "zerodha:lhs_attribute",
+      "@type": "xsd:string"
+    },
+    "operator": {
+      "@id": "zerodha:operator",
+      "@type": "xsd:string"
+    },
+    "rhs_type": {
+      "@id": "zerodha:rhs_type",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "zerodha:type",
+      "@type": "xsd:string"
+    },
+    "rhs_constant": {
+      "@id": "zerodha:rhs_constant",
+      "@type": "xsd:decimal"
+    },
+    "basket": {
+      "@id": "zerodha:basket",
+      "@type": "xsd:string"
+    },
+    "PostAlertsResponse": "zerodha:PostAlertsResponse",
+    "status": {
+      "@id": "zerodha:status",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "zerodha:data"
+    },
+    "GetAlertsUuidResponse": "zerodha:GetAlertsUuidResponse",
+    "PutAlertsUuidRequest": "zerodha:PutAlertsUuidRequest",
+    "PutAlertsUuidResponse": "zerodha:PutAlertsUuidResponse",
+    "GetAlertsUuidHistoryResponse": "zerodha:GetAlertsUuidHistoryResponse",
+    "PostGttTriggersRequest": "zerodha:PostGttTriggersRequest",
+    "condition": {
+      "@id": "zerodha:condition",
+      "@type": "xsd:string"
+    },
+    "orders": {
+      "@id": "zerodha:orders",
+      "@type": "xsd:string"
+    },
+    "PostGttTriggersResponse": "zerodha:PostGttTriggersResponse",
+    "data.trigger_id": {
+      "@id": "zerodha:data.trigger_id",
+      "@type": "xsd:string"
+    },
+    "PostOrdersVarietyRequest": "zerodha:PostOrdersVarietyRequest",
+    "tradingsymbol": {
+      "@id": "zerodha:tradingsymbol",
+      "@type": "xsd:string"
+    },
+    "exchange": {
+      "@id": "zerodha:exchange",
+      "@type": "xsd:string"
+    },
+    "transaction_type": {
+      "@id": "zerodha:transaction_type",
+      "@type": "xsd:string"
+    },
+    "order_type": {
+      "@id": "zerodha:order_type",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "zerodha:quantity",
+      "@type": "xsd:string"
+    },
+    "product": {
+      "@id": "zerodha:product",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "zerodha:price",
+      "@type": "xsd:string"
+    },
+    "trigger_price": {
+      "@id": "zerodha:trigger_price",
+      "@type": "xsd:string"
+    },
+    "disclosed_quantity": {
+      "@id": "zerodha:disclosed_quantity",
+      "@type": "xsd:string"
+    },
+    "validity": {
+      "@id": "zerodha:validity",
+      "@type": "xsd:string"
+    },
+    "validity_ttl": {
+      "@id": "zerodha:validity_ttl",
+      "@type": "xsd:string"
+    },
+    "iceberg_legs": {
+      "@id": "zerodha:iceberg_legs",
+      "@type": "xsd:string"
+    },
+    "iceberg_quantity": {
+      "@id": "zerodha:iceberg_quantity",
+      "@type": "xsd:string"
+    },
+    "auction_number": {
+      "@id": "zerodha:auction_number",
+      "@type": "xsd:string"
+    },
+    "market_protection": {
+      "@id": "zerodha:market_protection",
+      "@type": "xsd:string"
+    },
+    "autoslice": {
+      "@id": "zerodha:autoslice",
+      "@type": "xsd:string"
+    },
+    "tag": {
+      "@id": "zerodha:tag",
+      "@type": "xsd:string"
+    },
+    "PostOrdersVarietyResponse": "zerodha:PostOrdersVarietyResponse",
+    "data.order_id": {
+      "@id": "zerodha:data.order_id",
+      "@type": "xsd:string"
+    },
+    "DeleteOrdersVarietyOrderidResponse": "zerodha:DeleteOrdersVarietyOrderidResponse",
+    "PutOrdersVarietyOrderidRequest": "zerodha:PutOrdersVarietyOrderidRequest",
+    "PutOrdersVarietyOrderidResponse": "zerodha:PutOrdersVarietyOrderidResponse",
+    "PostSessionTokenResponse": "zerodha:PostSessionTokenResponse",
+    "data.user_type": {
+      "@id": "zerodha:data.user_type",
+      "@type": "xsd:string"
+    },
+    "data.email": {
+      "@id": "zerodha:data.email",
+      "@type": "xsd:string"
+    },
+    "data.user_name": {
+      "@id": "zerodha:data.user_name",
+      "@type": "xsd:string"
+    },
+    "data.user_shortname": {
+      "@id": "zerodha:data.user_shortname",
+      "@type": "xsd:string"
+    },
+    "data.broker": {
+      "@id": "zerodha:data.broker",
+      "@type": "xsd:string"
+    },
+    "data.avatar_url": {
+      "@id": "zerodha:data.avatar_url",
+      "@type": "xsd:string"
+    },
+    "data.user_id": {
+      "@id": "zerodha:data.user_id",
+      "@type": "xsd:string"
+    },
+    "data.api_key": {
+      "@id": "zerodha:data.api_key",
+      "@type": "xsd:string"
+    },
+    "data.access_token": {
+      "@id": "zerodha:data.access_token",
+      "@type": "xsd:string"
+    },
+    "data.public_token": {
+      "@id": "zerodha:data.public_token",
+      "@type": "xsd:string"
+    },
+    "data.enctoken": {
+      "@id": "zerodha:data.enctoken",
+      "@type": "xsd:string"
+    },
+    "data.refresh_token": {
+      "@id": "zerodha:data.refresh_token",
+      "@type": "xsd:string"
+    },
+    "data.silo": {
+      "@id": "zerodha:data.silo",
+      "@type": "xsd:string"
+    },
+    "data.login_time": {
+      "@id": "zerodha:data.login_time",
+      "@type": "xsd:string"
+    },
+    "data.meta.demat_consent": {
+      "@id": "zerodha:data.meta.demat_consent",
+      "@type": "xsd:string"
+    },
+    "GetUserMarginsSegmentResponse": "zerodha:GetUserMarginsSegmentResponse",
+    "data.enabled": {
+      "@id": "zerodha:data.enabled",
+      "@type": "xsd:boolean"
+    },
+    "data.net": {
+      "@id": "zerodha:data.net",
+      "@type": "xsd:decimal"
+    },
+    "data.available.cash": {
+      "@id": "zerodha:data.available.cash",
+      "@type": "xsd:decimal"
+    },
+    "data.available.opening_balance": {
+      "@id": "zerodha:data.available.opening_balance",
+      "@type": "xsd:decimal"
+    },
+    "data.available.live_balance": {
+      "@id": "zerodha:data.available.live_balance",
+      "@type": "xsd:decimal"
+    },
+    "data.available.intraday_payin": {
+      "@id": "zerodha:data.available.intraday_payin",
+      "@type": "xsd:decimal"
+    },
+    "data.available.adhoc_margin": {
+      "@id": "zerodha:data.available.adhoc_margin",
+      "@type": "xsd:decimal"
+    },
+    "data.available.collateral": {
+      "@id": "zerodha:data.available.collateral",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.debits": {
+      "@id": "zerodha:data.utilised.debits",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.exposure": {
+      "@id": "zerodha:data.utilised.exposure",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.m2m_realised": {
+      "@id": "zerodha:data.utilised.m2m_realised",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.m2m_unrealised": {
+      "@id": "zerodha:data.utilised.m2m_unrealised",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.option_premium": {
+      "@id": "zerodha:data.utilised.option_premium",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.payout": {
+      "@id": "zerodha:data.utilised.payout",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.span": {
+      "@id": "zerodha:data.utilised.span",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.holding_sales": {
+      "@id": "zerodha:data.utilised.holding_sales",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.turnover": {
+      "@id": "zerodha:data.utilised.turnover",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.liquid_collateral": {
+      "@id": "zerodha:data.utilised.liquid_collateral",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.stock_collateral": {
+      "@id": "zerodha:data.utilised.stock_collateral",
+      "@type": "xsd:decimal"
+    },
+    "data.utilised.delivery": {
+      "@id": "zerodha:data.utilised.delivery",
+      "@type": "xsd:decimal"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Zerodha API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Zerodha's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-13) from openapi/_ae-authored/zerodha-openapi-generated.yml.",
+  "dcterms:created": "2026-10-13",
+  "dcterms:source": [
+    "openapi/_ae-authored/zerodha-openapi-generated.yml"
+  ]
+}

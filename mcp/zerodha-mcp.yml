@@ -1,0 +1,124 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/_ae-authored/zerodha-openapi-generated.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.zerodha.com, developers.kite.trade, kite.trade, support.zerodha.com;
+  verdict absent. Candidate tools below are derived from the 22 operation(s) in the provider's own OpenAPI (22 listed); they describe what a server
+  WOULD expose, not one that exists.
+tools:
+- name: delete_alerts
+  operationId: delete_alerts
+  method: DELETE
+  path: /alerts
+  description: DELETE /alerts
+- name: get_alerts
+  operationId: get_alerts
+  method: GET
+  path: /alerts
+  description: GET /alerts
+- name: post_alerts
+  operationId: post_alerts
+  method: POST
+  path: /alerts
+  description: Create a new alert
+- name: get_alerts_uuid
+  operationId: get_alerts_uuid
+  method: GET
+  path: /alerts/{uuid}
+  description: Retrieve a specific alert
+- name: put_alerts_uuid
+  operationId: put_alerts_uuid
+  method: PUT
+  path: /alerts/{uuid}
+  description: Modify an existing alert
+- name: get_alerts_uuid_history
+  operationId: get_alerts_uuid_history
+  method: GET
+  path: /alerts/{uuid}/history
+  description: Retrieve the history of a specific alert
+- name: get_gtt_triggers
+  operationId: get_gtt_triggers
+  method: GET
+  path: /gtt/triggers
+  description: GET /gtt/triggers
+- name: post_gtt_triggers
+  operationId: post_gtt_triggers
+  method: POST
+  path: /gtt/triggers
+  description: Place a GTT
+- name: get_orders
+  operationId: get_orders
+  method: GET
+  path: /orders
+  description: GET /orders
+- name: post_orders_variety
+  operationId: post_orders_variety
+  method: POST
+  path: /orders/{variety}
+  description: Place an order of a particular variety
+- name: delete_orders_variety_order_id
+  operationId: delete_orders_variety_orderId
+  method: DELETE
+  path: /orders/{variety}/{orderId}
+  description: Cancel an open or pending order
+- name: put_orders_variety_order_id
+  operationId: put_orders_variety_orderId
+  method: PUT
+  path: /orders/{variety}/{orderId}
+  description: Modify an open or pending order
+- name: get_portfolio_holdings_auctions
+  operationId: get_portfolio_holdings_auctions
+  method: GET
+  path: /portfolio/holdings/auctions
+  description: GET /portfolio/holdings/auctions
+- name: post_portfolio_holdings_authorise
+  operationId: post_portfolio_holdings_authorise
+  method: POST
+  path: /portfolio/holdings/authorise
+  description: POST /portfolio/holdings/authorise
+- name: put_portfolio_positions
+  operationId: put_portfolio_positions
+  method: PUT
+  path: /portfolio/positions
+  description: PUT /portfolio/positions
+- name: get_portfolio_portfolioid
+  operationId: get_portfolio_portfolioid
+  method: GET
+  path: /portfolio/{portfolioid}
+  description: GET /portfolio/holdings
+- name: delete_session_token
+  operationId: delete_session_token
+  method: DELETE
+  path: /session/token
+  description: DELETE /session/token
+- name: get_session_token
+  operationId: get_session_token
+  method: GET
+  path: /session/token
+  description: GET /session/token
+- name: post_session_token
+  operationId: post_session_token
+  method: POST
+  path: /session/token
+  description: Authenticate and obtain the access_token after the login flow
+- name: get_trades
+  operationId: get_trades
+  method: GET
+  path: /trades
+  description: GET /trades
+- name: get_user_margins_segment
+  operationId: get_user_margins_segment
+  method: GET
+  path: /user/margins/{segment}
+  description: Retrieve detailed funds and margin information
+- name: get_user_userid
+  operationId: get_user_userid
+  method: GET
+  path: /user/{userid}
+  description: GET /user/margins

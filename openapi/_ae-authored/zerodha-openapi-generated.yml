@@ -1,0 +1,867 @@
+openapi: 3.1.0
+info:
+  title: Zerodha API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation
+    names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline
+    could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+paths:
+  /alerts:
+    delete:
+      operationId: delete_alerts
+      tags:
+      - Alerts
+      summary: DELETE /alerts
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/alerts?uuid=550e8400-e29b-41d4-a716-446655440000\"  -X DELETE  -H 'X-Kite-Version: 3'  -H 'Authorization:\
+          \ token api_key:access_token' \n { \n \"status\" : \"success\" , \n \"data\" : null \n } \n Delete multiple alerts ¶ \n To delete multiple\
+          \ alerts, pass multiple uuid query parameters: "
+    get:
+      operationId: get_alerts
+      tags:
+      - Alerts
+      summary: GET /alerts
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/alerts  -H 'X-Kite-Version: 3'  -H 'Authorization: token api_key:access_token'  -d 'name=NIFTY 50'\
+          \  -d 'lhs_exchange=INDICES'  -d 'lhs_tradingsymbol=NIFTY 50'  -d 'lhs_attribute=LastTradedPrice'  -d 'operator=>='  -d 'rhs_type=constant'\
+          \  -d 'type=simple'  -d 'rhs_constant=27000' \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"type\" : \"simple\" , \n \"user_id\"\
+          \ : \"AB1234\" , \n \""
+    post:
+      operationId: post_alerts
+      tags:
+      - Alerts
+      summary: Create a new alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Name of the alert
+      - name: lhs_exchange
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Name of the exchange for left-hand side (NSE, BSE, NFO, CDS, BCD, MCX, INDICES)
+      - name: lhs_tradingsymbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Trading symbol of the instrument for left-hand side
+      - name: lhs_attribute
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Attribute to monitor (e.g., LastTradedPrice)
+      - name: operator
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Comparison operator
+      - name: rhs_type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Type of the right-hand side (constant or instrument)
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The type of alert
+      - name: rhs_constant
+        in: query
+        required: false
+        schema:
+          type: number
+        description: Value to compare against (when rhs_type is constant)
+      - name: basket
+        in: query
+        required: false
+        schema:
+          type: string
+        description: JSON string containing basket configuration (required for ATO alerts)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAlertsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostAlertsResponse'
+      x-evidence:
+        kind: documentation
+  /alerts/{uuid}:
+    get:
+      operationId: get_alerts_uuid
+      tags:
+      - Alerts
+      summary: Retrieve a specific alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAlertsUuidResponse'
+      x-evidence:
+        kind: documentation
+    put:
+      operationId: put_alerts_uuid
+      tags:
+      - Alerts
+      summary: Modify an existing alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutAlertsUuidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutAlertsUuidResponse'
+      x-evidence:
+        kind: documentation
+  /alerts/{uuid}/history:
+    get:
+      operationId: get_alerts_uuid_history
+      tags:
+      - Alerts
+      summary: Retrieve the history of a specific alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAlertsUuidHistoryResponse'
+      x-evidence:
+        kind: documentation
+  /gtt/triggers:
+    get:
+      operationId: get_gtt_triggers
+      tags:
+      - Gtt
+      summary: GET /gtt/triggers
+      x-source: https://kite.trade/docs/connect/v3/gtt
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/gtt/triggers  -H 'X-Kite-Version: 3'  -H 'Authorization: token api_key:access_token'  -d 'type=single'\
+          \  -d 'condition={\"exchange\":\"NSE\", \"tradingsymbol\":\"INFY\", \"trigger_values\":[702.0], \"last_price\": 798.0}'  -d 'orders=[{\"\
+          exchange\":\"NSE\", \"tradingsymbol\": \"INFY\", \"transaction_type\": \"BUY\", \"quantity\": 1, \"order_type\": \"LIMIT\",\"product\"\
+          : \"CNC\", \"price\": 702.5}]' \n { \"s"
+    post:
+      operationId: post_gtt_triggers
+      tags:
+      - Gtt
+      summary: Place a GTT
+      x-source: https://kite.trade/docs/connect/v3/gtt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostGttTriggersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostGttTriggersResponse'
+      x-evidence:
+        kind: documentation
+  /orders:
+    get:
+      operationId: get_orders
+      tags:
+      - Orders
+      summary: GET /orders
+      x-source: https://kite.trade/docs/connect/v3/orders
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/orders\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"\
+          status\" : \"success\" , \n \"data\" : [ \n { \n \"placed_by\" : \"XXXXXX\" , \n \"order_id\" : \"100000000000000\" , \n \"exchange_order_id\"\
+          \ : \"200000000000000\" , \n \"parent_order_id\" : null , \n \"status\" : \"CANCELLED\" , \n \"status_message\" : null , \n \"status_message_raw\"\
+          \ : null , \n \"order_timestamp\" : \""
+  /orders/{variety}:
+    post:
+      operationId: post_orders_variety
+      tags:
+      - Orders
+      summary: Place an order of a particular variety
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrdersVarietyRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostOrdersVarietyResponse'
+      x-evidence:
+        kind: documentation
+  /orders/{variety}/{orderId}:
+    delete:
+      operationId: delete_orders_variety_orderId
+      tags:
+      - Orders
+      summary: Cancel an open or pending order
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOrdersVarietyOrderidResponse'
+      x-evidence:
+        kind: documentation
+    put:
+      operationId: put_orders_variety_orderId
+      tags:
+      - Orders
+      summary: Modify an open or pending order
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutOrdersVarietyOrderidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutOrdersVarietyOrderidResponse'
+      x-evidence:
+        kind: documentation
+  /portfolio/holdings/auctions:
+    get:
+      operationId: get_portfolio_holdings_auctions
+      tags:
+      - Portfolio
+      summary: GET /portfolio/holdings/auctions
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/portfolio/holdings/auctions\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\"\
+          \ \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"tradingsymbol\" : \"ASHOKLEY\" , \n \"exchange\" : \"NSE\" , \n \"instrument_token\"\
+          \ : 54282 , \n \"isin\" : \"INE208A01029\" , \n \"product\" : \"CNC\" , \n \"price\" : 0 , \n \"quantity\" : 1 , \n \"t1_quantity\"\
+          \ : 0 , \n \"realised_quantity\" : 1 , \n "
+  /portfolio/holdings/authorise:
+    post:
+      operationId: post_portfolio_holdings_authorise
+      tags:
+      - Portfolio
+      summary: POST /portfolio/holdings/authorise
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request POST https://api.kite.trade/portfolio/holdings/authorise\n -H \"X-Kite-Version: 3\"  -H \"Authorization: token\
+          \ api_key:access_token\"  -d \"isin=INE002A01018\" -d \"quantity=50\"  -d \"isin=INE009A01021\" -d \"quantity=50\" \n { \n \"status\"\
+          \ : \"success\" , \n \"data\" : { \n \"request_id\" : \"na8QgCeQm05UHG6NL9sAGRzdfSF64UdB\" \n } \n } \n The isin and quantity pairs\
+          \ here are optional. If they're provided, au"
+  /portfolio/positions:
+    put:
+      operationId: put_portfolio_positions
+      tags:
+      - Portfolio
+      summary: PUT /portfolio/positions
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request PUT https://api.kite.trade/portfolio/positions\n -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\"\
+          \  -d \"tradingsymbol=INFY\"  -d \"exchange=NSE\"  -d \"transaction_type=BUY\"  -d \"position_type=overnight\"  -d \"quantity=3\"  -d\
+          \ \"old_product=NRML\"  -d \"new_product=MIS\" \n { \n \"status\" : \"success\" , \n \"data\" : true \n } \n Request parameters ¶ \n\
+          \ parameter \n tradingsymbol \n T"
+  /portfolio/{portfolioid}:
+    get:
+      operationId: get_portfolio_portfolioid
+      tags:
+      - Portfolio
+      summary: GET /portfolio/holdings
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      parameters:
+      - name: portfolioid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/portfolio/holdings\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\"\
+          \ \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"tradingsymbol\" : \"AARON\" , \n \"exchange\" : \"NSE\" , \n \"instrument_token\"\
+          \ : 263681 , \n \"isin\" : \"INE721Z01010\" , \n \"product\" : \"CNC\" , \n \"price\" : 0 , \n \"quantity\" : 1 , \n \"used_quantity\"\
+          \ : 0 , \n \"t1_quantity\" : 0 , \n \"realised_quant"
+        collapsed_from: 2 example path(s) differing only at portfolioId
+  /session/token:
+    delete:
+      operationId: delete_session_token
+      tags:
+      - Session
+      summary: DELETE /session/token
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: access_token
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request DELETE  -H \"X-Kite-Version: 3\"  \"https://api.kite.trade/session/token?api_key=xxx&access_token=yyy\" \n {\
+          \ \n \"status\" : \"success\" , \n \"data\" : true \n } \n Copyright © 2015 - 2025, Zerodha Technology Pvt. Ltd.\n Made with\n Material\
+          \ for MkDocs"
+    get:
+      operationId: get_session_token
+      tags:
+      - Session
+      summary: GET /session/token
+      x-source: https://kite.trade/docs/connect/v3/user
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/session/token  -H \"X-Kite-Version: 3\"  -d \"api_key=xxx\"  -d \"request_token=yyy\"  -d \"checksum=zzz\"\
+          \ \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"user_type\" : \"individual\" , \n \"email\" : \"XXXXXX\" , \n \"user_name\"\
+          \ : \"Kite Connect\" , \n \"user_shortname\" : \"Connect\" , \n \"broker\" : \"ZERODHA\" , \n \"exchanges\" : [ \n \"NSE\" , \n \"NFO\"\
+          \ , \n \"BFO\" , \n \"CDS\" , \n \"BSE\" , \n \"MCX\" , \n \"BCD\" "
+    post:
+      operationId: post_session_token
+      tags:
+      - Session
+      summary: Authenticate and obtain the access_token after the login flow
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The public API key
+      - name: request_token
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The one-time token obtained after the login flow
+      - name: checksum
+        in: query
+        required: true
+        schema:
+          type: string
+        description: SHA-256 hash of (api_key + request_token + api_secret)
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostSessionTokenResponse'
+      x-evidence:
+        kind: documentation
+  /trades:
+    get:
+      operationId: get_trades
+      tags:
+      - Trades
+      summary: GET /trades
+      x-source: https://kite.trade/docs/connect/v3/orders
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/trades\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"\
+          status\" : \"success\" , \n \"data\" : [ \n { \n \"trade_id\" : \"10000000\" , \n \"order_id\" : \"200000000000000\" , \n \"exchange\"\
+          \ : \"NSE\" , \n \"tradingsymbol\" : \"SBIN\" , \n \"instrument_token\" : 779521 , \n \"product\" : \"CNC\" , \n \"average_price\" :\
+          \ 420.65 , \n \"quantity\" : 1 , \n \"exchange_order_id\" : \"300"
+  /user/margins/{segment}:
+    get:
+      operationId: get_user_margins_segment
+      tags:
+      - User
+      summary: Retrieve detailed funds and margin information
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: segment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserMarginsSegmentResponse'
+      x-evidence:
+        kind: documentation
+  /user/{userid}:
+    get:
+      operationId: get_user_userid
+      tags:
+      - User
+      summary: GET /user/margins
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: userid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/user/margins\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n\
+          \ { \n \"status\" : \"success\" , \n \"data\" : { \n \"equity\" : { \n \"enabled\" : true , \n \"net\" : 99725.05000000002 , \n \"available\"\
+          \ : { \n \"adhoc_margin\" : 0 , \n \"cash\" : 245431.6 , \n \"opening_balance\" : 245431.6 , \n \"live_balance\" : 99725.05000000002\
+          \ , \n \"collateral\" : 0 , \n \"intraday_payin\" : "
+        collapsed_from: 2 example path(s) differing only at userId
+components:
+  schemas:
+    PostAlertsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        lhs_exchange:
+          type: string
+        lhs_tradingsymbol:
+          type: string
+        lhs_attribute:
+          type: string
+        operator:
+          type: string
+        rhs_type:
+          type: string
+        type:
+          type: string
+        rhs_constant:
+          type: number
+        basket:
+          type: string
+      required:
+      - name
+      - lhs_exchange
+      - lhs_tradingsymbol
+      - lhs_attribute
+      - operator
+      - rhs_type
+      - type
+    PostAlertsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    GetAlertsUuidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    PutAlertsUuidRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        lhs_exchange:
+          type: string
+        lhs_tradingsymbol:
+          type: string
+        lhs_attribute:
+          type: string
+        operator:
+          type: string
+        rhs_type:
+          type: string
+        type:
+          type: string
+        rhs_constant:
+          type: number
+      required:
+      - name
+      - lhs_exchange
+      - lhs_tradingsymbol
+      - lhs_attribute
+      - operator
+      - rhs_type
+      - type
+    PutAlertsUuidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    GetAlertsUuidHistoryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: array
+    PostGttTriggersRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of GTT
+        condition:
+          type: string
+          description: The condition parameters (json object)
+        orders:
+          type: string
+          description: The orders to be placed (json array)
+      required:
+      - type
+      - condition
+      - orders
+    PostGttTriggersResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Response status
+        data.trigger_id:
+          type: string
+          description: ID of the created trigger
+    PostOrdersVarietyRequest:
+      type: object
+      properties:
+        tradingsymbol:
+          type: string
+        exchange:
+          type: string
+        transaction_type:
+          type: string
+        order_type:
+          type: string
+        quantity:
+          type: string
+        product:
+          type: string
+        price:
+          type: string
+        trigger_price:
+          type: string
+        disclosed_quantity:
+          type: string
+        validity:
+          type: string
+        validity_ttl:
+          type: string
+        iceberg_legs:
+          type: string
+        iceberg_quantity:
+          type: string
+        auction_number:
+          type: string
+        market_protection:
+          type: string
+        autoslice:
+          type: string
+        tag:
+          type: string
+      required:
+      - tradingsymbol
+      - exchange
+      - transaction_type
+      - order_type
+      - quantity
+      - product
+    PostOrdersVarietyResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+    DeleteOrdersVarietyOrderidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+    PutOrdersVarietyOrderidRequest:
+      type: object
+      properties:
+        order_type:
+          type: string
+        quantity:
+          type: string
+        price:
+          type: string
+        trigger_price:
+          type: string
+        disclosed_quantity:
+          type: string
+        validity:
+          type: string
+        market_protection:
+          type: string
+        autoslice:
+          type: string
+        tag:
+          type: string
+    PutOrdersVarietyOrderidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+    PostSessionTokenResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.user_type:
+          type: string
+        data.email:
+          type: string
+        data.user_name:
+          type: string
+        data.user_shortname:
+          type: string
+        data.broker:
+          type: string
+        data.exchanges[]:
+          type: string
+        data.products[]:
+          type: string
+        data.order_types[]:
+          type: string
+        data.avatar_url:
+          type: string
+        data.user_id:
+          type: string
+        data.api_key:
+          type: string
+        data.access_token:
+          type: string
+        data.public_token:
+          type: string
+        data.enctoken:
+          type: string
+        data.refresh_token:
+          type: string
+        data.silo:
+          type: string
+        data.login_time:
+          type: string
+        data.meta.demat_consent:
+          type: string
+    GetUserMarginsSegmentResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.enabled:
+          type: boolean
+        data.net:
+          type: number
+        data.available.cash:
+          type: number
+        data.available.opening_balance:
+          type: number
+        data.available.live_balance:
+          type: number
+        data.available.intraday_payin:
+          type: number
+        data.available.adhoc_margin:
+          type: number
+        data.available.collateral:
+          type: number
+        data.utilised.debits:
+          type: number
+        data.utilised.exposure:
+          type: number
+        data.utilised.m2m_realised:
+          type: number
+        data.utilised.m2m_unrealised:
+          type: number
+        data.utilised.option_premium:
+          type: number
+        data.utilised.payout:
+          type: number
+        data.utilised.span:
+          type: number
+        data.utilised.holding_sales:
+          type: number
+        data.utilised.turnover:
+          type: number
+        data.utilised.liquid_collateral:
+          type: number
+        data.utilised.stock_collateral:
+          type: number
+        data.utilised.delivery:
+          type: number
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
+security:
+- apiKey: []
+tags:
+- name: Alerts
+- name: Gtt
+- name: Orders
+- name: Portfolio
+- name: Session
+- name: Trades
+- name: User

@@ -1,0 +1,92 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/_ae-authored/zerodha-openapi-generated.yml
+vocabulary:
+  name: Zerodha Domain Vocabulary
+  description: 'Terms declared by Zerodha''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-13'
+  terms:
+  - term: PostAlertsRequest
+    definition: 'Object declared by the contract with fields: name, lhs_exchange, lhs_tradingsymbol, lhs_attribute, operator, rhs_type, type,
+      rhs_constant, basket.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostAlertsRequest
+  - term: PostAlertsResponse
+    definition: 'Object declared by the contract with fields: status, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostAlertsResponse
+  - term: GetAlertsUuidResponse
+    definition: 'Object declared by the contract with fields: status, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/GetAlertsUuidResponse
+  - term: PutAlertsUuidRequest
+    definition: 'Object declared by the contract with fields: name, lhs_exchange, lhs_tradingsymbol, lhs_attribute, operator, rhs_type, type,
+      rhs_constant.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutAlertsUuidRequest
+  - term: PutAlertsUuidResponse
+    definition: 'Object declared by the contract with fields: status, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutAlertsUuidResponse
+  - term: GetAlertsUuidHistoryResponse
+    definition: 'Object declared by the contract with fields: status, data.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/GetAlertsUuidHistoryResponse
+  - term: PostGttTriggersRequest
+    definition: 'Object declared by the contract with fields: type, condition, orders.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostGttTriggersRequest
+  - term: PostGttTriggersResponse
+    definition: 'Object declared by the contract with fields: status, data.trigger_id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostGttTriggersResponse
+  - term: PostOrdersVarietyRequest
+    definition: 'Object declared by the contract with fields: tradingsymbol, exchange, transaction_type, order_type, quantity, product, price,
+      trigger_price, disclosed_quantity, validity, validity_ttl, iceberg_legs. (5 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostOrdersVarietyRequest
+  - term: PostOrdersVarietyResponse
+    definition: 'Object declared by the contract with fields: status, data.order_id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostOrdersVarietyResponse
+  - term: DeleteOrdersVarietyOrderidResponse
+    definition: 'Object declared by the contract with fields: status, data.order_id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/DeleteOrdersVarietyOrderidResponse
+  - term: PutOrdersVarietyOrderidRequest
+    definition: 'Object declared by the contract with fields: order_type, quantity, price, trigger_price, disclosed_quantity, validity, market_protection,
+      autoslice, tag.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutOrdersVarietyOrderidRequest
+  - term: PutOrdersVarietyOrderidResponse
+    definition: 'Object declared by the contract with fields: status, data.order_id.'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutOrdersVarietyOrderidResponse
+  - term: PostSessionTokenResponse
+    definition: 'Object declared by the contract with fields: status, data.user_type, data.email, data.user_name, data.user_shortname, data.broker,
+      data.exchanges[], data.products[], data.order_types[], data.avatar_url, data.user_id, data.api_key. (7 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PostSessionTokenResponse
+  - term: GetUserMarginsSegmentResponse
+    definition: 'Object declared by the contract with fields: status, data.enabled, data.net, data.available.cash, data.available.opening_balance,
+      data.available.live_balance, data.available.intraday_payin, data.available.adhoc_margin, data.available.collateral, data.utilised.debits,
+      data.utilised.exposure, data.utilised.m2m_realised. (9 more)'
+    tags:
+    - Object
+    source: openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/GetUserMarginsSegmentResponse

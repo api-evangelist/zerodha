@@ -1,0 +1,15 @@
+generated: '2026-10-13'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: kite.trade
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Apr  3 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: kite.trade
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

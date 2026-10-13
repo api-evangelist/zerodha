@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zerodha/main/json-schema/zerodha-get-user-margins-segment-response-schema.json",
+  "title": "GetUserMarginsSegmentResponse",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/GetUserMarginsSegmentResponse",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "data.enabled": {
+      "type": "boolean"
+    },
+    "data.net": {
+      "type": "number"
+    },
+    "data.available.cash": {
+      "type": "number"
+    },
+    "data.available.opening_balance": {
+      "type": "number"
+    },
+    "data.available.live_balance": {
+      "type": "number"
+    },
+    "data.available.intraday_payin": {
+      "type": "number"
+    },
+    "data.available.adhoc_margin": {
+      "type": "number"
+    },
+    "data.available.collateral": {
+      "type": "number"
+    },
+    "data.utilised.debits": {
+      "type": "number"
+    },
+    "data.utilised.exposure": {
+      "type": "number"
+    },
+    "data.utilised.m2m_realised": {
+      "type": "number"
+    },
+    "data.utilised.m2m_unrealised": {
+      "type": "number"
+    },
+    "data.utilised.option_premium": {
+      "type": "number"
+    },
+    "data.utilised.payout": {
+      "type": "number"
+    },
+    "data.utilised.span": {
+      "type": "number"
+    },
+    "data.utilised.holding_sales": {
+      "type": "number"
+    },
+    "data.utilised.turnover": {
+      "type": "number"
+    },
+    "data.utilised.liquid_collateral": {
+      "type": "number"
+    },
+    "data.utilised.stock_collateral": {
+      "type": "number"
+    },
+    "data.utilised.delivery": {
+      "type": "number"
+    }
+  }
+}

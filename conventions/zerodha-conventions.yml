@@ -1,0 +1,12 @@
+generated: '2026-10-13'
+method: derived
+generator: derive-conformance.py
+source: openapi/ (1 document(s), 11 mutating operations)
+idempotency:
+  scope:
+  - post_session_token
+  coverage: partial
+  header: request_token
+  mechanism: request header / body token declared in the OpenAPI
+  evidence: request_token on 1 of 11 mutating operations
+  verified: derived

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zerodha/main/json-schema/zerodha-put-orders-variety-orderid-request-schema.json",
+  "title": "PutOrdersVarietyOrderidRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutOrdersVarietyOrderidRequest",
+  "type": "object",
+  "properties": {
+    "order_type": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "trigger_price": {
+      "type": "string"
+    },
+    "disclosed_quantity": {
+      "type": "string"
+    },
+    "validity": {
+      "type": "string"
+    },
+    "market_protection": {
+      "type": "string"
+    },
+    "autoslice": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    }
+  }
+}

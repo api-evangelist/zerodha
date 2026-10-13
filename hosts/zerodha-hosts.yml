@@ -1,0 +1,111 @@
+generated: '2026-10-13'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 7
+  own: 3
+  other_domain: 3
+  platform: 1
+  roles:
+  - api
+  - marketing
+  - portal
+  - source
+  - support
+  - website
+hosts:
+- host: api.kite.trade
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - namespace-probe
+  - contract-discovery
+  - well-known
+  types: []
+  serves:
+  - api
+  status: 200
+  registrable_domain: kite.trade
+  role: api
+  relation: own
+- host: api.zerodha.com
+  found_by:
+  - contract-discovery
+  types: []
+  serves: []
+  registrable_domain: zerodha.com
+  role: api
+  relation: other-domain
+- host: developers.kite.trade
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - DeveloperPortal
+  - SignUp
+  serves:
+  - docs
+  registrable_domain: kite.trade
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: kite.trade
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - docs-index
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - ChangeLog
+  - Website
+  - Documentation
+  - APIReference
+  - GettingStarted
+  serves:
+  - docs
+  - cdn
+  vendor: cloudflare
+  registrable_domain: kite.trade
+  role: website
+  relation: own
+- host: support.zerodha.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  types:
+  - Support
+  serves: []
+  registrable_domain: zerodha.com
+  role: support
+  relation: other-domain
+- host: zerodha.com
+  found_by:
+  - pointer
+  types:
+  - TermsOfService
+  - PrivacyPolicy
+  - Pricing
+  - Newsroom
+  serves: []
+  registrable_domain: zerodha.com
+  role: marketing
+  relation: other-domain

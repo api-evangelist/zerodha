@@ -1,23 +1,132 @@
 aid: zerodha
+
 name: Zerodha
-description: 'Zerodha is a company surfaced via the API Evangelist harvest backlog (source: tag-qc) and
-  added to the network as a stub for full-pipeline profiling.'
+
+image: https://zerodha.com/static/images/kite-trade/kite-connect-og.png
+
+description: Zerodha is India’s leading retail stock‑broking platform offering a suite of developer‑focused APIs called Kite Connect. The APIs
+  provide REST endpoints and WebSocket streams for order execution, portfolio management, market data, mutual funds, margins, and more. Built
+  for traders, platforms and fintechs, they enable automation of trading strategies and integration with third‑party services, backed by extensive
+  SDKs and documentation.
+
 url: https://raw.githubusercontent.com/api-evangelist/zerodha/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:tag-qc
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-13 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-13'
+
 modified: '2026-10-13'
+
 tags:
 - Company
-apis: []
+- Finance
+- Trading
+- APIs
+- Fintech
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Spectral
+  url: rules/zerodha-rules.yml
+- type: JSONLD
+  url: json-ld/zerodha-context.jsonld
+- type: Vocabulary
+  url: vocabulary/zerodha-vocabulary.yml
+- type: DataModel
+  url: data-model/zerodha-data-model.yml
+- type: Idempotency
+  url: conventions/zerodha-conventions.yml
+- type: Conventions
+  url: conventions/zerodha-conventions.yml
+- type: Conformance
+  url: conformance/zerodha-conformance.yml
+- type: Hosts
+  url: hosts/zerodha-hosts.yml
+- type: Vendors
+  url: vendors/zerodha-vendors.yml
+- type: SDKs
+  url: packages/zerodha-packages.yml
+- type: Packages
+  url: packages/zerodha-packages.yml
+- type: TermsOfService
+  url: https://zerodha.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://zerodha.com/privacy-policy/
+- type: Pricing
+  url: https://zerodha.com/pricing/
+- type: Newsroom
+  url: https://zerodha.com/media
+- type: ChangeLog
+  url: https://kite.trade/docs/connect/v3/changelog/
+- type: DomainSecurity
+  url: security/zerodha-domain-security.yml
 - type: Website
   url: https://kite.trade
+- type: DeveloperPortal
+  url: https://developers.kite.trade
+- type: Documentation
+  url: https://kite.trade/docs/connect/v3/
+- type: APIReference
+  url: https://kite.trade/docs/connect/v3/
+- type: GettingStarted
+  url: https://kite.trade/docs/connect/v3/agent-setup/
+- type: Support
+  url: https://support.zerodha.com
+- type: GitHubOrganization
+  url: https://github.com/zerodha
+- type: SignUp
+  url: https://developers.kite.trade/signup
+
+apis:
+- aid: zerodha:zerodha-api
+  name: Zerodha API
+  description: 'Zerodha API as documented publicly: 22 operations. Contract generated from the documentation by API Evangelist (2026-10-13); not
+    the provider''s own document.'
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/zerodha-openapi-generated.yml
+    x-provenance: generated
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+
+x-coverage:
+  state: blocked
+  reason: bot-challenge
+  method: derived
+  generated: '2026-10-13'
+  generator: derive-coverage.py (pre-flight evidence)
+  detail: >-
+    the company's own front door answers a browser with an anti-bot challenge, so nothing behind it is reachable by any reader
+  evidence:
+  - url: https://kite.trade
+    status: 429
+x-enrichment:
+  date: '2026-10-13'
+  status: enriched
+  artifacts_added: 20
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

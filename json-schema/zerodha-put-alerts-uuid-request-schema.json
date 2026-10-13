@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/zerodha/main/json-schema/zerodha-put-alerts-uuid-request-schema.json",
+  "title": "PutAlertsUuidRequest",
+  "x-generated": "2026-10-13",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/zerodha-openapi-generated.yml#/components/schemas/PutAlertsUuidRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "lhs_exchange": {
+      "type": "string"
+    },
+    "lhs_tradingsymbol": {
+      "type": "string"
+    },
+    "lhs_attribute": {
+      "type": "string"
+    },
+    "operator": {
+      "type": "string"
+    },
+    "rhs_type": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "rhs_constant": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "name",
+    "lhs_exchange",
+    "lhs_tradingsymbol",
+    "lhs_attribute",
+    "operator",
+    "rhs_type",
+    "type"
+  ]
+}
