@@ -1,0 +1,98 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Portfolio API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Portfolio
+paths:
+  /portfolio/holdings/auctions:
+    get:
+      operationId: get_portfolio_holdings_auctions
+      tags:
+      - Portfolio
+      summary: GET /portfolio/holdings/auctions
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/portfolio/holdings/auctions\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"tradingsymbol\" : \"ASHOKLEY\" , \n \"exchange\" : \"NSE\" , \n \"instrument_token\" : 54282 , \n \"isin\" : \"INE208A01029\" , \n \"product\" : \"CNC\" , \n \"price\" : 0 , \n \"quantity\" : 1 , \n \"t1_quantity\" : 0 , \n \"realised_quantity\" : 1 , \n "
+  /portfolio/holdings/authorise:
+    post:
+      operationId: post_portfolio_holdings_authorise
+      tags:
+      - Portfolio
+      summary: POST /portfolio/holdings/authorise
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request POST https://api.kite.trade/portfolio/holdings/authorise\n -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\"  -d \"isin=INE002A01018\" -d \"quantity=50\"  -d \"isin=INE009A01021\" -d \"quantity=50\" \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"request_id\" : \"na8QgCeQm05UHG6NL9sAGRzdfSF64UdB\" \n } \n } \n The isin and quantity pairs here are optional. If they're provided, au"
+  /portfolio/positions:
+    put:
+      operationId: put_portfolio_positions
+      tags:
+      - Portfolio
+      summary: PUT /portfolio/positions
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request PUT https://api.kite.trade/portfolio/positions\n -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\"  -d \"tradingsymbol=INFY\"  -d \"exchange=NSE\"  -d \"transaction_type=BUY\"  -d \"position_type=overnight\"  -d \"quantity=3\"  -d \"old_product=NRML\"  -d \"new_product=MIS\" \n { \n \"status\" : \"success\" , \n \"data\" : true \n } \n Request parameters ¶ \n parameter \n tradingsymbol \n T"
+  /portfolio/{portfolioid}:
+    get:
+      operationId: get_portfolio_portfolioid
+      tags:
+      - Portfolio
+      summary: GET /portfolio/holdings
+      x-source: https://kite.trade/docs/connect/v3/portfolio
+      parameters:
+      - name: portfolioid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/portfolio/holdings\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"tradingsymbol\" : \"AARON\" , \n \"exchange\" : \"NSE\" , \n \"instrument_token\" : 263681 , \n \"isin\" : \"INE721Z01010\" , \n \"product\" : \"CNC\" , \n \"price\" : 0 , \n \"quantity\" : 1 , \n \"used_quantity\" : 0 , \n \"t1_quantity\" : 0 , \n \"realised_quant"
+        collapsed_from: 2 example path(s) differing only at portfolioId
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

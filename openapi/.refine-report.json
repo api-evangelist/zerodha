@@ -1,0 +1,24 @@
+{
+  "provider": "zerodha",
+  "sources": [
+    "_ae-authored/zerodha-openapi-generated.yml"
+  ],
+  "outputs": [
+    "zerodha-alerts-api-openapi.yml",
+    "zerodha-gtt-api-openapi.yml",
+    "zerodha-orders-api-openapi.yml",
+    "zerodha-portfolio-api-openapi.yml",
+    "zerodha-session-api-openapi.yml",
+    "zerodha-trades-api-openapi.yml",
+    "zerodha-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "zerodha-openapi-generated.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+7 apis, 7 total)"
+  ],
+  "skipped": []
+}

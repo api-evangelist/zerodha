@@ -1,0 +1,49 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Trades API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Trades
+paths:
+  /trades:
+    get:
+      operationId: get_trades
+      tags:
+      - Trades
+      summary: GET /trades
+      x-source: https://kite.trade/docs/connect/v3/orders
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/trades\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"trade_id\" : \"10000000\" , \n \"order_id\" : \"200000000000000\" , \n \"exchange\" : \"NSE\" , \n \"tradingsymbol\" : \"SBIN\" , \n \"instrument_token\" : 779521 , \n \"product\" : \"CNC\" , \n \"average_price\" : 420.65 , \n \"quantity\" : 1 , \n \"exchange_order_id\" : \"300"
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

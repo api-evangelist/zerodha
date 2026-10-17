@@ -1,0 +1,300 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Alerts API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Alerts
+paths:
+  /alerts:
+    delete:
+      operationId: delete_alerts
+      tags:
+      - Alerts
+      summary: DELETE /alerts
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/alerts?uuid=550e8400-e29b-41d4-a716-446655440000\"  -X DELETE  -H 'X-Kite-Version: 3'  -H 'Authorization: token api_key:access_token' \n { \n \"status\" : \"success\" , \n \"data\" : null \n } \n Delete multiple alerts ¶ \n To delete multiple alerts, pass multiple uuid query parameters: "
+    get:
+      operationId: get_alerts
+      tags:
+      - Alerts
+      summary: GET /alerts
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/alerts  -H 'X-Kite-Version: 3'  -H 'Authorization: token api_key:access_token'  -d 'name=NIFTY 50'  -d 'lhs_exchange=INDICES'  -d 'lhs_tradingsymbol=NIFTY 50'  -d 'lhs_attribute=LastTradedPrice'  -d 'operator=>='  -d 'rhs_type=constant'  -d 'type=simple'  -d 'rhs_constant=27000' \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"type\" : \"simple\" , \n \"user_id\" : \"AB1234\" , \n \""
+    post:
+      operationId: post_alerts
+      tags:
+      - Alerts
+      summary: Create a new alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Name of the alert
+      - name: lhs_exchange
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Name of the exchange for left-hand side (NSE, BSE, NFO, CDS, BCD, MCX, INDICES)
+      - name: lhs_tradingsymbol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Trading symbol of the instrument for left-hand side
+      - name: lhs_attribute
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Attribute to monitor (e.g., LastTradedPrice)
+      - name: operator
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Comparison operator
+      - name: rhs_type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Type of the right-hand side (constant or instrument)
+      - name: type
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The type of alert
+      - name: rhs_constant
+        in: query
+        required: false
+        schema:
+          type: number
+        description: Value to compare against (when rhs_type is constant)
+      - name: basket
+        in: query
+        required: false
+        schema:
+          type: string
+        description: JSON string containing basket configuration (required for ATO alerts)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostAlertsRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostAlertsResponse'
+      x-evidence:
+        kind: documentation
+  /alerts/{uuid}:
+    get:
+      operationId: get_alerts_uuid
+      tags:
+      - Alerts
+      summary: Retrieve a specific alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAlertsUuidResponse'
+      x-evidence:
+        kind: documentation
+    put:
+      operationId: put_alerts_uuid
+      tags:
+      - Alerts
+      summary: Modify an existing alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutAlertsUuidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutAlertsUuidResponse'
+      x-evidence:
+        kind: documentation
+  /alerts/{uuid}/history:
+    get:
+      operationId: get_alerts_uuid_history
+      tags:
+      - Alerts
+      summary: Retrieve the history of a specific alert
+      x-source: https://kite.trade/docs/connect/v3/alerts
+      parameters:
+      - name: uuid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAlertsUuidHistoryResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    GetAlertsUuidHistoryResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: array
+    PutAlertsUuidRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        lhs_exchange:
+          type: string
+        lhs_tradingsymbol:
+          type: string
+        lhs_attribute:
+          type: string
+        operator:
+          type: string
+        rhs_type:
+          type: string
+        type:
+          type: string
+        rhs_constant:
+          type: number
+      required:
+      - name
+      - lhs_exchange
+      - lhs_tradingsymbol
+      - lhs_attribute
+      - operator
+      - rhs_type
+      - type
+    PutAlertsUuidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    PostAlertsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    GetAlertsUuidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+    PostAlertsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        lhs_exchange:
+          type: string
+        lhs_tradingsymbol:
+          type: string
+        lhs_attribute:
+          type: string
+        operator:
+          type: string
+        rhs_type:
+          type: string
+        type:
+          type: string
+        rhs_constant:
+          type: number
+        basket:
+          type: string
+      required:
+      - name
+      - lhs_exchange
+      - lhs_tradingsymbol
+      - lhs_attribute
+      - operator
+      - rhs_type
+      - type
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

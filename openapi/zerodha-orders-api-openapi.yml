@@ -1,0 +1,223 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Orders API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Orders
+paths:
+  /orders:
+    get:
+      operationId: get_orders
+      tags:
+      - Orders
+      summary: GET /orders
+      x-source: https://kite.trade/docs/connect/v3/orders
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/orders\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"status\" : \"success\" , \n \"data\" : [ \n { \n \"placed_by\" : \"XXXXXX\" , \n \"order_id\" : \"100000000000000\" , \n \"exchange_order_id\" : \"200000000000000\" , \n \"parent_order_id\" : null , \n \"status\" : \"CANCELLED\" , \n \"status_message\" : null , \n \"status_message_raw\" : null , \n \"order_timestamp\" : \""
+  /orders/{variety}:
+    post:
+      operationId: post_orders_variety
+      tags:
+      - Orders
+      summary: Place an order of a particular variety
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrdersVarietyRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostOrdersVarietyResponse'
+      x-evidence:
+        kind: documentation
+  /orders/{variety}/{orderId}:
+    delete:
+      operationId: delete_orders_variety_orderId
+      tags:
+      - Orders
+      summary: Cancel an open or pending order
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteOrdersVarietyOrderidResponse'
+      x-evidence:
+        kind: documentation
+    put:
+      operationId: put_orders_variety_orderId
+      tags:
+      - Orders
+      summary: Modify an open or pending order
+      x-source: https://kite.trade/docs/connect/v3/orders
+      parameters:
+      - name: variety
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutOrdersVarietyOrderidRequest'
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutOrdersVarietyOrderidResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostOrdersVarietyResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+    PutOrdersVarietyOrderidRequest:
+      type: object
+      properties:
+        order_type:
+          type: string
+        quantity:
+          type: string
+        price:
+          type: string
+        trigger_price:
+          type: string
+        disclosed_quantity:
+          type: string
+        validity:
+          type: string
+        market_protection:
+          type: string
+        autoslice:
+          type: string
+        tag:
+          type: string
+    PostOrdersVarietyRequest:
+      type: object
+      properties:
+        tradingsymbol:
+          type: string
+        exchange:
+          type: string
+        transaction_type:
+          type: string
+        order_type:
+          type: string
+        quantity:
+          type: string
+        product:
+          type: string
+        price:
+          type: string
+        trigger_price:
+          type: string
+        disclosed_quantity:
+          type: string
+        validity:
+          type: string
+        validity_ttl:
+          type: string
+        iceberg_legs:
+          type: string
+        iceberg_quantity:
+          type: string
+        auction_number:
+          type: string
+        market_protection:
+          type: string
+        autoslice:
+          type: string
+        tag:
+          type: string
+      required:
+      - tradingsymbol
+      - exchange
+      - transaction_type
+      - order_type
+      - quantity
+      - product
+    PutOrdersVarietyOrderidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+    DeleteOrdersVarietyOrderidResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.order_id:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

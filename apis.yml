@@ -90,16 +90,16 @@ common:
   url: https://developers.kite.trade/signup
 
 apis:
-- aid: zerodha:zerodha-api
-  name: Zerodha API
-  description: 'Zerodha API as documented publicly: 22 operations. Contract generated from the documentation by API Evangelist (2026-10-13); not
-    the provider''s own document.'
+- aid: zerodha:zerodha-alerts-api
+  name: Zerodha Alerts API
+  description: The Alerts API from Zerodha — 3 operation(s) for alerts.
   humanURL: https://kite.trade/docs/connect/v3/user
   baseURL: https://api.kite.trade
+  tags:
+  - Alerts
   properties:
   - type: OpenAPI
-    url: openapi/_ae-authored/zerodha-openapi-generated.yml
-    x-provenance: generated
+    url: openapi/zerodha-alerts-api-openapi.yml
   - type: JSONSchema
     url: json-schema/zerodha-get-user-margins-segment-response-schema.json
   - type: JSONSchema
@@ -112,7 +112,138 @@ apis:
     url: json-schema/zerodha-put-alerts-uuid-request-schema.json
   - type: JSONSchema
     url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
-
+- aid: zerodha:zerodha-gtt-api
+  name: Zerodha Gtt API
+  description: The Gtt API from Zerodha — 1 operation(s) for gtt.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - Gtt
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-gtt-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+- aid: zerodha:zerodha-orders-api
+  name: Zerodha Orders API
+  description: The Orders API from Zerodha — 3 operation(s) for orders.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-orders-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+- aid: zerodha:zerodha-portfolio-api
+  name: Zerodha Portfolio API
+  description: The Portfolio API from Zerodha — 4 operation(s) for portfolio.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - Portfolio
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-portfolio-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+- aid: zerodha:zerodha-session-api
+  name: Zerodha Session API
+  description: The Session API from Zerodha — 1 operation(s) for session.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-session-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+- aid: zerodha:zerodha-trades-api
+  name: Zerodha Trades API
+  description: The Trades API from Zerodha — 1 operation(s) for trades.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - Trades
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-trades-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
+- aid: zerodha:zerodha-user-api
+  name: Zerodha User API
+  description: The User API from Zerodha — 2 operation(s) for user.
+  humanURL: https://kite.trade/docs/connect/v3/user
+  baseURL: https://api.kite.trade
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/zerodha-user-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/zerodha-get-user-margins-segment-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-session-token-response-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-orders-variety-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-post-alerts-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-alerts-uuid-request-schema.json
+  - type: JSONSchema
+    url: json-schema/zerodha-put-orders-variety-orderid-request-schema.json
 x-coverage:
   state: blocked
   reason: bot-challenge

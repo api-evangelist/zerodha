@@ -1,0 +1,96 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Gtt API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Gtt
+paths:
+  /gtt/triggers:
+    get:
+      operationId: get_gtt_triggers
+      tags:
+      - Gtt
+      summary: GET /gtt/triggers
+      x-source: https://kite.trade/docs/connect/v3/gtt
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/gtt/triggers  -H 'X-Kite-Version: 3'  -H 'Authorization: token api_key:access_token'  -d 'type=single'  -d 'condition={\"exchange\":\"NSE\", \"tradingsymbol\":\"INFY\", \"trigger_values\":[702.0], \"last_price\": 798.0}'  -d 'orders=[{\"exchange\":\"NSE\", \"tradingsymbol\": \"INFY\", \"transaction_type\": \"BUY\", \"quantity\": 1, \"order_type\": \"LIMIT\",\"product\": \"CNC\", \"price\": 702.5}]' \n { \"s"
+    post:
+      operationId: post_gtt_triggers
+      tags:
+      - Gtt
+      summary: Place a GTT
+      x-source: https://kite.trade/docs/connect/v3/gtt
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostGttTriggersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostGttTriggersResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostGttTriggersResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Response status
+        data.trigger_id:
+          type: string
+          description: ID of the created trigger
+    PostGttTriggersRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The type of GTT
+        condition:
+          type: string
+          description: The condition parameters (json object)
+        orders:
+          type: string
+          description: The orders to be placed (json array)
+      required:
+      - type
+      - condition
+      - orders
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

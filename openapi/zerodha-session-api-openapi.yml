@@ -1,0 +1,149 @@
+openapi: 3.2.0
+info:
+  title: Zerodha Session API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: Session
+paths:
+  /session/token:
+    delete:
+      operationId: delete_session_token
+      tags:
+      - Session
+      summary: DELETE /session/token
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: access_token
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: api_key
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl --request DELETE  -H \"X-Kite-Version: 3\"  \"https://api.kite.trade/session/token?api_key=xxx&access_token=yyy\" \n { \n \"status\" : \"success\" , \n \"data\" : true \n } \n Copyright © 2015 - 2025, Zerodha Technology Pvt. Ltd.\n Made with\n Material for MkDocs"
+    get:
+      operationId: get_session_token
+      tags:
+      - Session
+      summary: GET /session/token
+      x-source: https://kite.trade/docs/connect/v3/user
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl https://api.kite.trade/session/token  -H \"X-Kite-Version: 3\"  -d \"api_key=xxx\"  -d \"request_token=yyy\"  -d \"checksum=zzz\" \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"user_type\" : \"individual\" , \n \"email\" : \"XXXXXX\" , \n \"user_name\" : \"Kite Connect\" , \n \"user_shortname\" : \"Connect\" , \n \"broker\" : \"ZERODHA\" , \n \"exchanges\" : [ \n \"NSE\" , \n \"NFO\" , \n \"BFO\" , \n \"CDS\" , \n \"BSE\" , \n \"MCX\" , \n \"BCD\" "
+    post:
+      operationId: post_session_token
+      tags:
+      - Session
+      summary: Authenticate and obtain the access_token after the login flow
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The public API key
+      - name: request_token
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The one-time token obtained after the login flow
+      - name: checksum
+        in: query
+        required: true
+        schema:
+          type: string
+        description: SHA-256 hash of (api_key + request_token + api_secret)
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostSessionTokenResponse'
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostSessionTokenResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.user_type:
+          type: string
+        data.email:
+          type: string
+        data.user_name:
+          type: string
+        data.user_shortname:
+          type: string
+        data.broker:
+          type: string
+        data.exchanges[]:
+          type: string
+        data.products[]:
+          type: string
+        data.order_types[]:
+          type: string
+        data.avatar_url:
+          type: string
+        data.user_id:
+          type: string
+        data.api_key:
+          type: string
+        data.access_token:
+          type: string
+        data.public_token:
+          type: string
+        data.enctoken:
+          type: string
+        data.refresh_token:
+          type: string
+        data.silo:
+          type: string
+        data.login_time:
+          type: string
+        data.meta.demat_consent:
+          type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization

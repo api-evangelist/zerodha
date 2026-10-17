@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Zerodha User API
+  version: '2026-10-13'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-13: 22 operation(s) read from 5 public documentation page(s) (each operation names its page in x-source). This is not the provider''s published contract; Zerodha has published no machine-readable contract that the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 25
+    documentation: -3
+    pages-with-code: 5
+    pages-read: 5
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-13'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://kite.trade/docs/connect/v3/user
+  - https://kite.trade/docs/connect/v3/orders
+  - https://kite.trade/docs/connect/v3/gtt
+  - https://kite.trade/docs/connect/v3/alerts
+  - https://kite.trade/docs/connect/v3/portfolio
+servers:
+- url: https://api.kite.trade
+security:
+- apiKey: []
+tags:
+- name: User
+paths:
+  /user/margins/{segment}:
+    get:
+      operationId: get_user_margins_segment
+      tags:
+      - User
+      summary: Retrieve detailed funds and margin information
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: segment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserMarginsSegmentResponse'
+      x-evidence:
+        kind: documentation
+  /user/{userid}:
+    get:
+      operationId: get_user_userid
+      tags:
+      - User
+      summary: GET /user/margins
+      x-source: https://kite.trade/docs/connect/v3/user
+      parameters:
+      - name: userid
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl \"https://api.kite.trade/user/margins\"  -H \"X-Kite-Version: 3\"  -H \"Authorization: token api_key:access_token\" \n { \n \"status\" : \"success\" , \n \"data\" : { \n \"equity\" : { \n \"enabled\" : true , \n \"net\" : 99725.05000000002 , \n \"available\" : { \n \"adhoc_margin\" : 0 , \n \"cash\" : 245431.6 , \n \"opening_balance\" : 245431.6 , \n \"live_balance\" : 99725.05000000002 , \n \"collateral\" : 0 , \n \"intraday_payin\" : "
+        collapsed_from: 2 example path(s) differing only at userId
+components:
+  schemas:
+    GetUserMarginsSegmentResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        data.enabled:
+          type: boolean
+        data.net:
+          type: number
+        data.available.cash:
+          type: number
+        data.available.opening_balance:
+          type: number
+        data.available.live_balance:
+          type: number
+        data.available.intraday_payin:
+          type: number
+        data.available.adhoc_margin:
+          type: number
+        data.available.collateral:
+          type: number
+        data.utilised.debits:
+          type: number
+        data.utilised.exposure:
+          type: number
+        data.utilised.m2m_realised:
+          type: number
+        data.utilised.m2m_unrealised:
+          type: number
+        data.utilised.option_premium:
+          type: number
+        data.utilised.payout:
+          type: number
+        data.utilised.span:
+          type: number
+        data.utilised.holding_sales:
+          type: number
+        data.utilised.turnover:
+          type: number
+        data.utilised.liquid_collateral:
+          type: number
+        data.utilised.stock_collateral:
+          type: number
+        data.utilised.delivery:
+          type: number
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: Authorization
